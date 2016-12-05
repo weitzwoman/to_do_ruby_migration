@@ -12,6 +12,7 @@
 <p>Create a new task:</p>
 
 <form action="/tasks-form" method="post">
+  <input id="list_id" name="list_id" value="<%= @current_list_id %>" type="hidden">
   <label for='description' type='text'>Task Name</label>
   <input id="description" name="description" type="text">
   <br>

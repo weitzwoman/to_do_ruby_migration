@@ -27,15 +27,17 @@ end
 get('/list/:id') do
   id = (params.fetch('id').to_i)
   list = List.find(id)
-  @current_list = list.first().fetch('name')
+  @current_list_name = list.first().fetch('name')
+  @current_list_id = list.first().fetch('id')
   @current_tasks = Task.find(id)
   erb(:list)
 end
 
-post('/tasks-form') do
+post('/tasks-form/:id') do
   description = params.fetch('description')
   due_date = params.fetch('due_date')
-  Task.new({:description => description, :due_date => due_date, :status_done => 'f' }).save()
+  list_id = params.fetch('id').to_i
+  Task.new({:description => description, :due_date => due_date, :status_done => 'f', :list_id => list_id}).save()
   erb(:success)
 end
 
