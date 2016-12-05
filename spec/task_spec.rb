@@ -11,9 +11,6 @@ RSpec.configure do |config|
 end
 
 describe(Task) do
-  # before() do
-  #   Task.clear()
-  # end
 
   describe('#description') do
     it("lets you give it a description") do

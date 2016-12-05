@@ -37,6 +37,10 @@ class Task
     DB.exec("SELECT due_date FROM tasks ORDER BY due_date ASC;")
   end
 
+  define_singleton_method(:find) do |task_key|
+    task_finder = DB.exec("SELECT * FROM tasks WHERE id = '#{task_key}';")
+  end
+
   # define_singleton_method(:clear) do
   #   @@all_tasks = []
   # end
