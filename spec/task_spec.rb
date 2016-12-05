@@ -57,7 +57,7 @@ describe(Task) do
       task1.save()
       task2.save()
       Task.sort_tasks_by_date_asc()
-      expect(Task.all())
+      expect(Task.all()).to(eq([task2, task1]))
     end
   end
 

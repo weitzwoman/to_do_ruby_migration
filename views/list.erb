@@ -5,13 +5,15 @@
 
 <ul>
   <% @current_tasks.each() do |task| %>
-    <li><%= task.description() %></li>
+    <li><%= task.fetch('description') %></li>
   <% end %>
 </ul>
 
+<button type="button" name="button"><a href="/sort_tasks_asc">Sort Tasks By Date - Ascending Order</a></button>
+
 <p>Create a new task:</p>
 
-<form action="/tasks-form" method="post">
+<form action="/tasks-form/<%= @current_list_id %>" method="post">
   <input id="list_id" name="list_id" value="<%= @current_list_id %>" type="hidden">
   <label for='description' type='text'>Task Name</label>
   <input id="description" name="description" type="text">
