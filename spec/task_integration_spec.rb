@@ -25,3 +25,30 @@ describe('viewing all of the lists', {:type => :feature}) do
     expect(page).to have_content('Homework')
   end
 end
+
+describe('seeing tasks for a list', {:type => :feature}) do
+  it('allows user to see tasks associated with a list') do
+    visit('/')
+    fill_in('name', :with => 'Homework')
+    click_button('Make list!')
+    click_link('Back')
+    click_link('Homework')
+    expect(page).to have_content('Here is a list of your tasks:')
+  end
+end
+
+describe('adding tasks to a list', {:type => :feature}) do
+  it('allows user to add tasks associated to a list') do
+    visit('/')
+    fill_in('name', :with => 'Homework')
+    click_button('Make list!')
+    click_link('Back')
+    click_link('Homework')
+    fill_in('description', :with => 'Epicodus SQL Lessons')
+    fill_in('due_date', :with => '2016-12-20')
+    click_button('Add task!')
+    click_link('Back')
+    click_link('Homework')
+    expect(page).to have_content('Epicodus SQL Lessons')
+  end
+end
