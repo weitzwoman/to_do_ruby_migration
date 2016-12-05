@@ -17,3 +17,9 @@ post('/tasks') do
   task.save()
   erb(:success)
 end
+
+
+|due_date timestamp|
+|1992-10-09|
+|1993-01-01|
+|1995-01-01|
