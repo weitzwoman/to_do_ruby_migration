@@ -34,9 +34,9 @@ class Task
   end
 
   # Order by does not permanently change the SQL DB
-  define_singleton_method(:sort_tasks_by_date_asc) do
-    # Pass in all parameters (separated by commas) that you want columns returned for
-    DB.exec("SELECT description, due_date FROM tasks ORDER BY due_date ASC;")
+  define_singleton_method(:sort_tasks_by_date_asc) do |task_key|
+    # Nevermind: Pass in all parameters (separated by commas) that you want columns returned for
+    DB.exec("SELECT * FROM tasks WHERE list_id = '#{task_key}' ORDER BY due_date ASC;")
   end
 
   define_singleton_method(:find) do |task_key|

@@ -52,9 +52,10 @@ end
 # End List Page routing
 
 # Sorted Tasks Routing
-get('/sort_tasks_asc') do
+get('/sort_tasks_asc/:id') do
+  list_id = params.fetch('id')
   # Returns date-sorted task table rows into an array variable
-  @sorted_tasks_array = Task.sort_tasks_by_date_asc()
+  @sorted_tasks_array = Task.sort_tasks_by_date_asc(list_id)
   erb(:sorted_tasks)
 end
 
