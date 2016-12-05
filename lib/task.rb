@@ -44,10 +44,6 @@ class Task
     task_finder
   end
 
-  # define_singleton_method(:clear) do
-  #   @@all_tasks = []
-  # end
-
   define_method(:==) do |another_task|
     self.description().==(another_task.description()).&(self.list_id().==(another_task.list_id())).&(self.due_date().==(another_task.due_date()).&(self.status_done().==(another_task.status_done())))
   end

@@ -6,7 +6,7 @@ require('pg')
 require('./lib/list')
 require('pry')
 
-DB = PG.connect({:dbname => "to_do"})
+DB = PG.connect({:dbname => "to_do_test"})
 
 # Index Routing
 get('/') do
@@ -64,24 +64,3 @@ post('/sorted_tasks') do
   erb(:sorted_tasks)
 end
 # End Sorted Tasks Routing
-
-# post('/new_task') do
-#   description = params.fetch('description')
-#   due_date = params.fetch('due_date')
-#   task = Task.new({:description => description, :due_date => due_date, :status_done => 'f' })
-#   task.save()
-#   erb(:success)
-# end
-
-
-
-#                 tasks
-# description|due_date timestamp|list_id|status_done|
-# "Mow the Lawn"|1992-10-09|    | 2     |
-# "Rake"        |1992-10-01|    | 2     |
-# "Do math"     |1992-10-08|    | 1     |
-#
-#                   lists
-# name          |id|
-# "Homework"|1|
-# "Yardwork"|2|

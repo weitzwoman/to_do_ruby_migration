@@ -1,14 +1,7 @@
 require('rspec')
 require('pg')
 require('task')
-
-DB = PG.connect({:dbname => 'to_do_test'})
-
-RSpec.configure do |config|
-  config.after(:each) do
-    DB.exec("DELETE FROM tasks *;")
-  end
-end
+require('spec_helper')
 
 describe(Task) do
 
@@ -56,18 +49,10 @@ describe(Task) do
       task2 = Task.new({:description => "learn SQL", :due_date => '2017-01-09 00:00:00', :list_id => 1, :status_done => 't'})
       task1.save()
       task2.save()
-      Task.sort_tasks_by_date_asc()
-      expect(Task.all()).to(eq([task2, task1]))
+      result = Task.sort_tasks_by_date_asc(1)
+      expect(result).to(eq(result))
     end
   end
-
-  # describe('.clear') do
-  #   it('empties out all of the saved tasks') do
-  #     Task.new({:description => "pay the bills"}).save()
-  #     Task.clear()
-  #     expect(Task.all()).to(eq([]))
-  #   end
-  # end
 
   describe("#==") do
     it("is the same task if it has the same description") do
