@@ -6,10 +6,10 @@
 
 ## Specifications
 
-#### 1. Adds List items as Class object
+#### 1. Adds List items as Class object and Saves them to a Database
 * _Name_
 
-#### 2. Adds Tasks as Class object
+#### 2. Adds Tasks as Class object and Saves them to a Database
 * _Task_
 * _Due Date_
 
@@ -23,9 +23,12 @@ _Works in any web browser. To run To Do List Application, in command line run:_
 ```
 $ git clone https://github.com/weitzwoman/to_do_list_ruby
 $ cd to_do_list_ruby
+$ postgres
+$ psql (optional, for editing the database directly)
 $ bundle
 $ ruby app.rb
 ```
+
 
 ## Support and contact details
 
