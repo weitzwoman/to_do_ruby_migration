@@ -1,2 +1,3 @@
-# class List < ActiveRecord::Base
-# end
+class List < ActiveRecord::Base
+  has_many(:tasks)
+end

@@ -1,16 +1,6 @@
 <h1>To Do List</h1>
 
-<p>Here are your lists:</p>
-
-<ul>
-  <% @tasks.not_done().each do |task| %>
-  <li><%= task.description %> <a href="/tasks/<%= task.id() %>/edit">Update this task's description</a></li>
-  <% end %>
-</ul>
-
-<form action="/new_list" method="post">
-  <label for='name' type='text'>Create a new list</label>
-  <input id="name" name="name" type="text">
-
-  <button type='submit'>Make list!</button>
-</form>
+<div class="container">
+  <a href="/lists">View All Lists</a> |   
+  <a href="/lists/new">Add New List</a>
+</div>

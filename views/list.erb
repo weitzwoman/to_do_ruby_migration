@@ -1,24 +1,36 @@
-<h3>Add Tasks for <%= @current_list %> </h3>
+<h1><%= @list.name() %></h1>
 
-<p>Here is a list of your tasks:</p>
+<% if @list.tasks().any?() %>
+  <h3>Here are all the tasks in this list:</h3>
 
-<ul>
-  <% @current_tasks.each() do |task| %>
-    <li><%= task.fetch('description') %></li>
-  <% end %>
-</ul>
+  <ul>
+    <% @list.tasks().each() do |task| %>
+      <li><%= task.description() %> </li>
+    <% end %>
+  </ul>
 
-<button type="button" name="button"><a href="/sort_tasks_asc/<%= @current_list_id %>">Sort Tasks By Date - Ascending Order</a></button>
+  <% else %>
+    <p>There are no tasks on this list!</p>
+<% end %>
 
-<p>Create a new task:</p>
+<h3>Add a task to <%= @list.name() %> </h3>
 
-<form action="/tasks-form/<%= @current_list_id %>" method="post">
-  <input id="list_id" name="list_id" value="<%= @current_list_id %>" type="hidden">
-  <label for='description' type='text'>Task Name</label>
+<form action="/tasks" method="post">
+  <input id="list_id" name="list_id" type="hidden" value="<%= @list.id() %>">
+
+  <label for="description">Description of the task:</label>
   <input id="description" name="description" type="text">
-  <br>
-  <label for='due_date' type='text'>Due Date (YYYY-MM-DD)</label>
-  <input id="due_date" name="due_date" type="text">
-  <br>
-  <button class="btn btn-danger" type='submit'>Add task!</button>
+
+  <button type="submit">Add task</button>
 </form>
+
+<hr>
+
+<div class="container">
+  <a href="/lists">View All Lists</a>
+  <a href="/lists/new">Add New List</a>
+</div>
+
+<div class="container">
+  <a href="/"><button class="btn">Home</a>
+</div>
