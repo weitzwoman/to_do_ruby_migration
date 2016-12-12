@@ -1,8 +1,8 @@
 # _To Do List Application_
 
-#### _A web application to save tasks within lists. Exercise to use SQL, Ruby, Sinatra and practice database routing; week three of Epicodus Ruby, 12/5/2016_
+#### _A web application to save tasks within lists. Exercise to use Ruby, Sinatra and active record; week four of Epicodus Ruby, 12/12/2016_
 
-#### By _**Tracie Weitzman and Jim Padilla**_
+#### By _**Tracie Weitzman and Michael Andrade**_
 
 ## Specifications
 
@@ -11,24 +11,27 @@
 
 #### 2. Adds Tasks as Class object and Saves them to a Database
 * _Task_
-* _Due Date_
-
-#### 3. Sorts Tasks in ascending order of Due Date
-* _Click Button: Sort Tasks by Date - Ascending Order_
 
 ## Setup/Installation Requirements
 
 _Works in any web browser. To run To Do List Application, in command line run:_
 
 ```
-$ git clone https://github.com/weitzwoman/to_do_list_ruby
+$ git clone https://github.com/weitzwoman/to_do_ruby_migration
 $ cd to_do_list_ruby
 $ postgres
-$ psql (optional, for editing the database directly)
 $ bundle
 $ ruby app.rb
 ```
 
+```
+In PSQL:
+CREATE DATABASE to_do;
+CREATE TABLE lists (id serial PRIMARY KEY, name varchar);
+CREATE TABLE tasks (id serial PRIMARY KEY, description varchar);
+```
+
+_Navigate to `localhost:4567` in browser._
 
 ## Support and contact details
 
@@ -39,9 +42,10 @@ _Contact us on Github at [weitzwoman](https://github.com/weitzwoman) and [JPCode
 * _HTML_
 * _CSS_
   * _Bootstrap_
-* _Ruby_
+* _Application: Ruby_
   * _Sinatra_
-* _SQL_
+* _Testing: Rspec, Capybara_
+* _Database: Postgres_
 
 
 ### License
