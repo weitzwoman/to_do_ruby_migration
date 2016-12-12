@@ -3,8 +3,8 @@
 <p>Here are your lists:</p>
 
 <ul>
-  <% @returned_lists.each() do |list| %>
-    <li><a href="/list/<%= list.id() %>"><%= list.name() %></a></li>
+  <% @tasks.not_done().each do |task| %>
+  <li><%= task.description %> <a href="/tasks/<%= task.id() %>/edit">Update this task's description</a></li>
   <% end %>
 </ul>
 

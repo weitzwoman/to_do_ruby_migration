@@ -1,7 +1,7 @@
 require('sinatra')
 require('sinatra/reloader')
-also_reload('lib/**/*.rb')
 require('sinatra/activerecord')
+also_reload('lib/**/*.rb')
 require('./lib/task')
 require('pg')
 require('./lib/list')
@@ -11,7 +11,21 @@ require('pry')
 get('/') do
   # Grabs all list entries from the list table
     # This is iterated through on the index page for displaying
-  @returned_lists = List.all()
+  # @returned_lists = List.all()
+  @tasks = Task.all()
+  erb(:index)
+end
+
+get('/tasks/:id/edit') do
+  @task = Task.find(params.fetch("id").to_i())
+  erb(:task_edit)
+end
+  #check if single quotes matter
+patch('/tasks/:id') do
+  description = params.fetch("description")
+  @task = Task.find(params.fetch("id").to_i())
+  @task.update({:description => description})
+  @tasks = Task.all()
   erb(:index)
 end
   # Button routing
