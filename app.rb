@@ -1,12 +1,11 @@
 require('sinatra')
 require('sinatra/reloader')
 also_reload('lib/**/*.rb')
+require('sinatra/activerecord')
 require('./lib/task')
 require('pg')
 require('./lib/list')
 require('pry')
-
-DB = PG.connect({:dbname => "to_do_test"})
 
 # Index Routing
 get('/') do
